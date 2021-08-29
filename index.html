@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f9ec.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Conway's Game of Life</title>
+	</head>
+
+	<body>
+		<div id="app">Hello world</div>
+		<script type="module" src="/src/main.ts"></script>
+		<div class="canvas"></div>
+		<span
+			><label>RUN:</label> <input type="checkbox" name="run" id="run" />
+			<input
+				type="range"
+				name="framerate"
+				id="framerate"
+				step="2"
+				min="0"
+				max="100"
+        value="0"
+			/>
+			<p id="framerate-display">0</p>
+		</span>
+	</body>
+</html>
