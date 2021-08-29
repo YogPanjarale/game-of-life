@@ -127,21 +127,21 @@ const sketch = (p: p5) => {
 	const frameRateDisplay = document.querySelector(
 		"#framerate-display"
 	) as HTMLImageElement;
-	const runCheckbox = document.querySelector(
-		"#run"
-	) as any as HTMLInputElement;
+	const runCheckbox = document.getElementById(
+		"run"
+	) as any as  HTMLInputElement
 	console.log(p.width / size, p.height / size, size);
 	let tileMap: TileMap;
 	p.setup = () => {
 		p.createCanvas(400, 400);
 		tileMap = new TileMap(p, p.width / size, p.height / size, size);
 	};
-	// @ts-ignore
-	frameRateInput.oninput= (e) => {
+	frameRateInput?.addEventListener( 'input',(e) => {
 		p.frameRate(parseInt(e.target!.value as any as string));
 		frameRateDisplay.innerText = e.target!.value as any as string;
-	};
+	});
 	p.draw = () => {
+    frameRateDisplay.innerText = p.frameRate().toFixed().toString();
 		if (p.mouseIsPressed) {
 			tileMap.handleClick(p.mouseX, p.mouseY);
 		}
