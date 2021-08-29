@@ -138,8 +138,9 @@ const sketch = (p: p5) => {
 		tileMap = new TileMap(p, p.width / size, p.height / size, size);
 	};
 	frameRateInput?.addEventListener("input", (e) => {
-		p.frameRate(parseInt(e.target!.value as any as string));
-		frameRateDisplay.innerText = e.target!.value as any as string;
+		const t = e.target as any;
+		p.frameRate(parseInt(t.value as any as string));
+		frameRateDisplay.innerText = t.value as any as string;
 	});
 	p.draw = () => {
 		frameRateDisplay.innerText =
