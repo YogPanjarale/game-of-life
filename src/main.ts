@@ -137,10 +137,10 @@ const sketch = (p: p5) => {
 		tileMap = new TileMap(p, p.width / size, p.height / size, size);
 	};
 	// @ts-ignore
-	frameRateInput.addEventListener("input", (e) => {
+	frameRateInput.oninput= (e) => {
 		p.frameRate(parseInt(e.target!.value as any as string));
 		frameRateDisplay.innerText = e.target!.value as any as string;
-	});
+	};
 	p.draw = () => {
 		if (p.mouseIsPressed) {
 			tileMap.handleClick(p.mouseX, p.mouseY);
