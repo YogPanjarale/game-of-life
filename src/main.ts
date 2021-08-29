@@ -75,7 +75,8 @@ class Tile {
 		this.alive
 			? this.p.fill(40, 44, 52)
 			: this.p.fill(256 - 40, 256 - 44, 256 - 52);
-		this.p.stroke(256);
+		this.p.stroke(256 - 20, 256 - 24, 256 - 32);
+		this.p.strokeWeight(1);
 		this.p.rect(
 			this.x * this.size,
 			this.y * this.size,
@@ -129,19 +130,20 @@ const sketch = (p: p5) => {
 	) as HTMLImageElement;
 	const runCheckbox = document.getElementById(
 		"run"
-	) as any as  HTMLInputElement
+	) as any as HTMLInputElement;
 	console.log(p.width / size, p.height / size, size);
 	let tileMap: TileMap;
 	p.setup = () => {
-		p.createCanvas(400, 400);
+		p.createCanvas(600, 400);
 		tileMap = new TileMap(p, p.width / size, p.height / size, size);
 	};
-	frameRateInput?.addEventListener( 'input',(e) => {
+	frameRateInput?.addEventListener("input", (e) => {
 		p.frameRate(parseInt(e.target!.value as any as string));
 		frameRateDisplay.innerText = e.target!.value as any as string;
 	});
 	p.draw = () => {
-    frameRateDisplay.innerText = p.frameRate().toFixed().toString();
+		frameRateDisplay.innerText =
+			"fps : " + p.frameRate().toFixed().toString();
 		if (p.mouseIsPressed) {
 			tileMap.handleClick(p.mouseX, p.mouseY);
 		}
