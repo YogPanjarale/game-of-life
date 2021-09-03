@@ -17,6 +17,15 @@ class TileMap {
 			}
 		}
 	}
+	reset() {
+		this.tiles = [];
+		for (let x = 0; x < this.width; x++) {
+			this.tiles[x] = [];
+			for (let y = 0; y < this.height; y++) {
+				this.tiles[x][y] = new Tile(this.p, x, y, this.size);
+			}
+		}
+	}
 	run() {
 		for (let x = 0; x < this.width; x++) {
 			for (let y = 0; y < this.height; y++) {
@@ -141,6 +150,13 @@ const sketch = (p: p5) => {
 		const t = e.target as any;
 		p.frameRate(parseInt(t.value as any as string));
 		frameRateDisplay.innerText = t.value as any as string;
+	});
+	//get element by id = reset
+	const resetButton = document.getElementById(
+		"reset"
+	) as any as HTMLButtonElement;
+	resetButton.addEventListener("click", () => {
+		tileMap.reset();
 	});
 	p.draw = () => {
 		frameRateDisplay.innerText =
