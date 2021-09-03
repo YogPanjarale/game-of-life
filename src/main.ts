@@ -132,8 +132,7 @@ class Tile {
 const sketch = (p: p5) => {
 	const size = 10;
 	const frameRateInput = document.querySelector(
-		"#frameRate"
-	) as any as HTMLInputElement;
+		"#framerate") as HTMLInputElement;
 	const frameRateDisplay = document.querySelector(
 		"#framerate-display"
 	) as HTMLImageElement;
@@ -161,6 +160,8 @@ const sketch = (p: p5) => {
 	p.draw = () => {
 		frameRateDisplay.innerText =
 			"fps : " + p.frameRate().toFixed().toString();
+		p.frameRate(parseInt(frameRateInput.value));
+		frameRateInput!.value = p.frameRate().toFixed().toString();
 		if (p.mouseIsPressed) {
 			tileMap.handleClick(p.mouseX, p.mouseY);
 		}
